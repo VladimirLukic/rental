@@ -3,18 +3,17 @@
 include_once "header.php";
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vehicles</title>
+    <title>Contracts</title>
 </head>
 <body>
-        <!-- popup form -->
-        <div id="edit">
+            <!-- popup form -->
+    <div id="edit">
         <form action="" method="POST">
             <p id="cancel">
                 <img class="cancel" src="../close_icon.png" alt="">
@@ -58,24 +57,24 @@ include_once "header.php";
             </p>
         </form>
     </div>
-    <div class="drop-menu vozila">
-        <p class="menu-list add">Upisi vozilo</p>
-        <p class="menu-list all">Sva vozila</p>
-        <p class="menu-list rented">Iznajmljena</p>
-        <p class="menu-list parked">Parkirana</p>
+    <div class="drop-menu ugovori">
+        <p class="menu-list">Sacini ugovor</p>
+        <p class="menu-list">Svi ugovori</p>
+        <p class="menu-list">Aktivni</p>
+        <p class="menu-list">Neaktivni</p>
     </div>
     <div id="columns">
-                <ul class="columns">
-                    <li class="data">1234567 89123456</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-            </div>
+        <ul class="columns">
+            <li class="data">1234567 89123456</li>
+            <li class="data">lista2</li>
+                <li class="data data1">lista3</li>
+                <li class="data data1">lista4</li>
+                <li class="data data1">lista5</li>
+                <li class="data data1">lista6</li>        
+                <li class="data data1">lista5</li>
+                <li class="data data1">lista6</li>        
+        </ul>
+    </div>
 
             <div id="list">
                 <ul class="line">
@@ -302,10 +301,9 @@ include_once "header.php";
                 </ul>
             </div>
     </div>
-
 </body>
 <script src="../js/list.js"></script>
 <script>
-    document.querySelector("#vehicles").style.backgroundColor = 'rgb(248, 216, 216)';
+    document.querySelector("#contracts").style.backgroundColor = 'rgb(248, 216, 216)';
 </script>
 </html>

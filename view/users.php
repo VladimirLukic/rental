@@ -1,16 +1,19 @@
+<?php
+
+include_once "header.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/list.css">
+    <title>Users</title>
 </head>
-
 <body>
-
-    <!-- popup form -->
-    <div id="edit">
+        <!-- popup form -->
+        <div id="edit">
         <form action="" method="POST">
             <p id="cancel">
                 <img class="cancel" src="../close_icon.png" alt="">
@@ -54,44 +57,13 @@
             </p>
         </form>
     </div>
-
-    <div id="wrapper">
-        <div id="nav">
-            <div id="nav_bar">
-                <input type="text" class="search user" placeholder="Search">
-                <p class="user">Hello Vladimir</p>
-                <p class="user img">
-                    <img src="../user_icon.jpg" alt="user" width="25" height="25">
-                </p>
-            </div>
-
-            <div id="menu">
-                <p id="vozila1" class="menu">Vozila</p>
-                <p id="korisnici" class="menu">Korisnici</p>
-                <p id="ugovori" class="menu">Ugovori</p>    
-            </div>
-            
-            <div class="drop-menu vozila">
-                <p class="menu-list add">Upisi vozilo</p>
-                <p class="menu-list all">Sva vozila</p>
-                <p class="menu-list rented">Iznajmljena</p>
-                <p class="menu-list parked">Parkirana</p>
-            </div>
-            <!-- <div class="drop-menu korisnici">
-                <p class="menu-list">Upisi korisnika</p>
-                <p class="menu-list">Svi korisnici</p>
-                <p class="menu-list">Najam</p>
-                <p class="menu-list">Neaktivni</p>
-            </div>
-            <div class="drop-menu ugovori">
-                <p class="menu-list">Sacini ugovor</p>
-                <p class="menu-list">Svi ugovori</p>
-                <p class="menu-list">Aktivni</p>
-                <p class="menu-list">Neaktivni</p>
-            </div> -->
-        </div>
-
-            <div id="columns">
+    <div class="drop-menu korisnici">
+        <p class="menu-list">Upisi korisnika</p>
+        <p class="menu-list">Svi korisnici</p>
+        <p class="menu-list">Najam</p>
+        <p class="menu-list">Neaktivni</p>
+    </div>
+    <div id="columns">
                 <ul class="columns">
                     <li class="data">1234567 89123456</li>
                     <li class="data">lista2</li>
@@ -331,5 +303,7 @@
     </div>
 </body>
 <script src="../js/list.js"></script>
+<script>
+    document.querySelector("#users").style.backgroundColor = 'rgb(248, 216, 216)';
+</script>
 </html>
-

@@ -43,7 +43,7 @@ body{
     padding: 10px 50px;
     border-radius: 3px 3px 0 0;
 }
-.drop-menu, #vozila1, #send{
+.drop-menu, #send{
     background-color: rgb(248, 216, 216);
 }
 .menu-list{
@@ -52,14 +52,12 @@ body{
     margin-right: 5%;
     cursor: pointer;
 }
-/* .drop-menu{
-    display: none;
-}
-.vozila{
-    display: block;
-} */
 .menu:hover{
     background-color: rgb(218, 216, 216);
+}
+a{
+    text-decoration: none;
+    color: black;
 }
 
 
@@ -73,6 +71,9 @@ body{
 }
 #list, .drop-menu, #columns{
     margin-left: 5%;
+}
+.drop-menu{
+    text-align: center;
 }
 #list, .menu-list, .img, .menu{
     cursor: pointer;
@@ -126,7 +127,6 @@ form{
     display: inline-block;
     width: 80%;
     background: white;
-    text-align: center;
     text-align: center;
     background-color: #ececee;
     border-radius: 5px;
