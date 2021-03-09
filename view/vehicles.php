@@ -1,6 +1,6 @@
 <?php
 
-include "../controllers/vehicles/getAll.php";
+include "../controllers/vehicles/getAllVehicles.php";
 include_once "header.php";
 ?>
 
@@ -12,6 +12,11 @@ include_once "header.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vehicles</title>
 </head>
+
+<script>
+    document.querySelector("#vehicles").style.backgroundColor = 'rgb(248, 216, 216)';
+</script>
+
 <body>
     <!-- popup form -->
     <div id="edit">
@@ -41,6 +46,11 @@ include_once "header.php";
     <div id="columns">
         <ul class="columns">
             <?php 
+                if(count($vehicles) == 0){
+                    print "<li class='data'>No new vehicles</li>";
+                    return;
+                }
+
                 foreach($vehicles[0] as $ind=>$el){
                     ($ind == 'id')? "":
                     print "<li class='data'>$ind</li>";
@@ -60,235 +70,8 @@ include_once "header.php";
                 print "</ul>";
             }
         ?>
-
-                <!-- <ul class="line">
-                    <li class="data">12345678912 31242456</li>
-                    <li class="data">12345678912 31242456</li>
-                        <li class="data data1">1234567891231242456</li>
-                        <li class="data data1">1234567891231242456</li>
-                        <li class="data data1">1234567891231242456</li>
-                        <li class="data data1">1234567891231242456</li>        
-                        <li class="data data1">1234567891231242456</li>
-                        <li class="data data1">1234567891231242456</li>        
-                        <li class="data data1">1234567891231242456</li>
-                        <li class="data data1">1234567891231242456</li>
-                        <li class="data data1">1234567891231242456</li>
-                        <li class="data data1">1234567891231242456</li>        
-                        <li class="data data1">1234567891231242456</li>
-                        <li class="data data1">1234567891231242456</li>        
-                        <li class="data data1">1234567891231242456</li>
-                        <li class="data data1">1234567891231242456</li>
-                        <li class="data data1">1234567891231242456</li>
-                        <li class="data data1">1234567891231242456</li>        
-                        <li class="data data1">1234567891231242456</li>
-                        <li class="data data1">1234567891231242456</li>        
-                </ul> -->
-               <!--  <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul>
-                <ul class="line">
-                    <li class="data">lista1</li>
-                    <li class="data">lista2</li>
-                        <li class="data data1">lista3</li>
-                        <li class="data data1">lista4</li>
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                        <li class="data data1">lista5</li>
-                        <li class="data data1">lista6</li>        
-                </ul> -->
-        <!-- </div> -->
-</div>
+    </div>
 
 </body>
 <script src="../js/list.js"></script>
-<script>
-    document.querySelector("#vehicles").style.backgroundColor = 'rgb(248, 216, 216)';
-</script>
 </html>

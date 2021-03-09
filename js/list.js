@@ -7,13 +7,16 @@ list.style.height = screen.height*0.64 + "px";
 
 //line control
 let line = document.querySelectorAll(".line"), lineLen = line.length;
-for(let i=0;i<lineLen;i++){
-    let data = line[i].querySelectorAll(".data"), dataLen = data.length, sum = 0;
-    for(let j=0;j<dataLen;j++){
-        sum += Number(data[j].clientWidth);
-        (sum >= line[i].clientWidth)? data[j].style.display = 'none':'';
-    }
-}
+line.forEach(element => element.style.width = screen.width*0.89 + "px");
+
+//this extends lines and overflow list
+// for(let i=0;i<lineLen;i++){
+//     let data = line[i].querySelectorAll(".data"), dataLen = data.length, sum = 0;
+//     for(let j=0;j<dataLen;j++){
+//         sum += Number(data[j].clientWidth);
+//         (sum >= line[i].clientWidth)? data[j].style.display = 'none':'';
+//     }
+// }
 
 //popup run
 function popRun(){
