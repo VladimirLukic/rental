@@ -29,37 +29,34 @@ class Vehicles{
     function preventAI(){
         $this->pdo->query("ALTER TABLE vehicles AUTO_INCREMENT = 0");
     }
+
     function getAll(){
         $data = $this->pdo->query("SELECT * FROM vehicles ORDER BY make ASC");
         $vehicles = $data->fetchAll(PDO::FETCH_ASSOC);
         return $vehicles;
     }
+
     function addNew($array){
         $data = $this->pdo->prepare("INSERT INTO vehicles (make, plates, status, year, registration,
         mileage, serviceInt, tires) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $data->execute($array);
 
-
         if($data->rowCount()>0){
-            print "Uspesno ste izmenili podatke vozila";
+            return "Vehicle added succesfully";
         }
         if($data->rowCount()==0){
-            print "Podaci su ostali neizmenjeni";
+            return "Vehicle not added!";
         }
 
     }
+
     function edit($array, $id){
-        $vehicle=$this->pdo->prepare("UPDATE vehicles SET make=?, plates=?, year=?, registration=?,
+        $vehicle=$this->pdo->prepare("UPDATE vehicles SET make=?, plates=?, status=?, year=?, registration=?,
         mileage=?, serviceInt=?, tires=? WHERE id='$id'");
-        $vehicle->execute($niz);
+        $vehicle->execute($array);
 
-
-        if($vehicle->rowCount()>0){
-            print "Uspesno ste izmenili podatke vozila";
-        }
-        if($vehicle->rowCount()==0){
-            print "Podaci su ostali neizmenjeni";
-        }
+        ($vehicle->rowCount() > 0)? $message = "Data altered succesfully": $message = "Altering data unsuccesfull!";
+        return $message;
     }
 }
 

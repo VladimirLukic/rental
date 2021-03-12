@@ -2,6 +2,7 @@
 
 include "../controllers/vehicles/getAllVehicles.php";
 include_once "header.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -20,15 +21,15 @@ include_once "header.php";
 <body>
     <!-- popup form -->
     <div id="edit">
-        <form action="" method="POST">
+        <form action="../controllers/vehicles/editVehicle.php" method="POST">
             <p id="cancel">
                 <img class="cancel" src="../close_icon.png" alt="">
             </p>
             <p>EDIT VEHICLE</p>
             <?php 
                 foreach($vehicles[0] as $ind=>$el){
-                    ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input class='edit' type='text'></p>":
-                    print "<p class='inp'><span>$ind</span><input class='edit' type='text'></p>";
+                    ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
+                    print "<p class='inp'><span>$ind</span><input required name=$ind class='edit' type='text'></p>";
                 }
             ?>
             <p>
@@ -37,6 +38,7 @@ include_once "header.php";
             </p>
         </form>
     </div>
+
     <div class="drop-menu vozila">
         <p class="menu-list all">All vehicles</p>
         <p class="menu-list rented">Rented</p>
@@ -57,7 +59,12 @@ include_once "header.php";
                 }
             ?>
         </ul>
-    </div>
+    </div>    <?php
+        if(isset($_GET['Message'])){
+            print "<div id='msg'>".$_GET['Message']."</div>";
+        }
+
+    ?>
 
     <div id="list">
         <?php 

@@ -27,8 +27,8 @@ include_once "header.php";
             <p>EDIT USER</p>
             <?php             
                 foreach($contracts[0] as $ind=>$el){
-                    ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input class='edit' type='text'></p>":
-                    print "<p class='inp'><span>$ind</span><input class='edit' type='text'></p>";
+                    ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
+                    print "<p class='inp'><span>$ind</span><input required name=$ind class='edit' type='text'></p>";
                 }
             ?>
             <p>
