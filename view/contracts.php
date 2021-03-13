@@ -39,7 +39,7 @@ include_once "header.php";
     </div>
     <div class="drop-menu vozila">
         <p class="menu-list all">All contracts</p>
-        <p class="menu-list rented">Rented</p>
+        <p class="menu-list rented">Active</p>
         <p class="menu-list parked">Inactiv</p>
         <p class="menu-list add">Add user</p>
     </div>
@@ -65,7 +65,7 @@ include_once "header.php";
                 print "<ul class='line'>";
                 foreach($el as $ind=>$el1){
                     ($ind == 'id')? print "<li style='display: none'>$el1</li>":
-                    print "<li class='data data1'>$el1</li>";
+                    print "<li class='data'>$el1</li>";
                 }
                 print "</ul>";
             }

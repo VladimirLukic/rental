@@ -31,5 +31,6 @@
         </div>
 
 </body>
+<script src="../js/search.js"></script>
 </html>
 
