@@ -14,9 +14,6 @@ include_once "header.php";
     <title>Vehicles</title>
 </head>
 
-<script>
-    document.querySelector("#vehicles").style.backgroundColor = 'rgb(248, 216, 216)';
-</script>
 
 <body>
     <!-- popup form -->
@@ -71,8 +68,11 @@ include_once "header.php";
             foreach($vehicles as $el){
                 print "<ul class='line'>";
                 foreach($el as $ind=>$el1){
-                    ($ind == 'id')? print "<li style='display: none'>$el1</li>":
-                    print "<li class='data'>$el1</li>";
+                    if($ind == 'make' or $ind == 'plates' or $ind == 'id'){ 
+                        if($ind == 'id') print "<li style='display: none'>$el1</li>";
+                        if($ind == 'make' or $ind == 'plates') print "<li class='data data1'>$el1</li>";
+                    }else
+                    print "<li class='data data2'>$el1</li>";
                 }
                 print "</ul>";
             }
@@ -80,5 +80,9 @@ include_once "header.php";
     </div>
 
 </body>
-<script src="../js/list.js"></script>
+<script>
+    document.querySelector("#vehicles").style.backgroundColor = 'rgb(248, 216, 216)';
+</script>
+<script src="../js/layout.js"></script>
+<script src="../js/search.js"></script>
 </html>

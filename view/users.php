@@ -13,11 +13,6 @@ include_once "header.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users</title>
 </head>
-
-<script>
-    document.querySelector("#users").style.backgroundColor = 'rgb(248, 216, 216)';
-</script>
-
 <body>
     <!-- popup form -->
     <div id="edit">
@@ -74,5 +69,9 @@ include_once "header.php";
     </div>
 
 </body>
-<script src="../js/list.js"></script>
+<script>
+    document.querySelector("#users").style.backgroundColor = 'rgb(248, 216, 216)';
+</script>
+<script src="../js/layout.js"></script>
+<script src="../js/search.js"></script>
 </html>
