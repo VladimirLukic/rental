@@ -2,6 +2,7 @@
 
 include "../controllers/contracts/getAllcontracts.php";
 include_once "header.php";
+print json_encode($contracts);
 
 ?>
 
@@ -11,21 +12,33 @@ include_once "header.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>contracts</title>
+    <title>Contracts</title>
 </head>
 <body>
     <!-- popup form -->
     <div id="edit">
-        <form action="" method="POST">
+        <form action="../controllers/contracts/editContract.php" method="POST">
             <p id="cancel">
                 <img class="cancel" src="../close_icon.png" alt="">
             </p>
             <p>EDIT USER</p>
-            <?php             
-                foreach($contracts[0] as $ind=>$el){
-                    ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
-                    print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";
+            <?php    
+                foreach($contracts as $el){
+                    foreach($el as $ind=>$el1){
+                            if(count($el) == 1){
+                                print "<p style='display: none'><span>".$el[0]."</span><input required name=".$el[0]." class='edit' type='text'></p>";
+                            }
+                            if($ind == 'id'){
+                            print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>";
+                        }else
+                        print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";                           
+                    }
                 }
+                     
+                // foreach($contracts[0] as $ind=>$el){
+                //     ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
+                //     print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";
+                // }
             ?>
             <p>
                 <p id='btn1'>
@@ -43,16 +56,11 @@ include_once "header.php";
         <p class="menu-list all">All contracts</p>
         <p class="menu-list rented">Active</p>
         <p class="menu-list parked">Inactiv</p>
-        <p class="menu-list add">Add user</p>
+        <p class="menu-list add">Make contract</p>
     </div>
     <div id="columns">
         <ul class="columns">
             <?php 
-                if(count($contracts) == 0){
-                    print "<li class='data'>No new contracts</li>";
-                    return;
-                }
-                
                 foreach($contracts[0] as $ind=>$el){
                     ($ind == 'id')? "":
                     print "<li class='data'>$ind</li>";
@@ -61,13 +69,22 @@ include_once "header.php";
         </ul>
     </div>
 
+    <?php
+        if(isset($_GET['Message'])){
+            print "<div id='msg'>".$_GET['Message']."</div>";
+        }
+    ?>
+
     <div id="list">
         <?php 
             foreach($contracts as $el){
                 print "<ul class='line'>";
                 foreach($el as $ind=>$el1){
-                    ($ind == 'id')? print "<li style='display: none'>$el1</li>":
-                    print "<li class='data'>$el1</li>";
+                    if($ind == 'make' or $ind == 'name' or $ind == 'id'){ 
+                        if($ind == 'id') print "<li style='display: none'>$el1</li>";
+                        if($ind == 'make' or $ind == 'name') print "<li class='data data1'>$el1</li>";
+                    }else
+                    print "<li class='data data2'>$el1</li>";
                 }
                 print "</ul>";
             }

@@ -34,6 +34,15 @@ class Users{
         $users = $data->fetchAll(PDO::FETCH_ASSOC);
         return $users;
     }
+    function edit($array, $id){
+        $user=$this->pdo->prepare("UPDATE users SET name=?, passport=?, status=?, address=?, driversLicence=?,
+        issued=?, issuedBy=?, phone=? WHERE id='$id'");
+        $user->execute($array);
+
+        ($user->rowCount() > 0)? $message = "Data altered succesfully": $message = "Altering data unsuccesfull!";
+        return $message;
+    }
+
 }
 
 $users = new Users();

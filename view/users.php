@@ -16,7 +16,7 @@ include_once "header.php";
 <body>
     <!-- popup form -->
     <div id="edit">
-        <form action="" method="POST">
+        <form action="../controllers/users/editUser.php" method="POST">
             <p id="cancel">
                 <img class="cancel" src="../close_icon.png" alt="">
             </p>
@@ -60,14 +60,23 @@ include_once "header.php";
             ?>
         </ul>
     </div>
+    
+    <?php
+        if(isset($_GET['Message'])){
+            print "<div id='msg'>".$_GET['Message']."</div>";
+        }
+    ?>
 
     <div id="list">
         <?php 
             foreach($users as $el){
                 print "<ul class='line'>";
                 foreach($el as $ind=>$el1){
-                    ($ind == 'id')? print "<li style='display: none'>$el1</li>":
-                    print "<li class='data'>$el1</li>";
+                    if($ind == 'name' or $ind == 'passport' or $ind == 'id'){ 
+                        if($ind == 'id') print "<li style='display: none'>$el1</li>";
+                        if($ind == 'name' or $ind == 'passport') print "<li class='data data1'>$el1</li>";
+                    }else
+                    print "<li class='data data2'>$el1</li>";
                 }
                 print "</ul>";
             }

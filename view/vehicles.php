@@ -62,11 +62,12 @@ include_once "header.php";
                 }
             ?>
         </ul>
-    </div>    <?php
+    </div>
+
+    <?php
         if(isset($_GET['Message'])){
             print "<div id='msg'>".$_GET['Message']."</div>";
         }
-
     ?>
 
     <div id="list">

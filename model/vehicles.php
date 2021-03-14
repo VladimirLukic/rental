@@ -35,7 +35,16 @@ class Vehicles{
         $vehicles = $data->fetchAll(PDO::FETCH_ASSOC);
         return $vehicles;
     }
+    function edit($array, $id){
+        $vehicle=$this->pdo->prepare("UPDATE vehicles SET make=?, plates=?, status=?, year=?, registration=?,
+        mileage=?, serviceInt=?, tires=? WHERE id='$id'");
+        $vehicle->execute($array);
 
+        ($vehicle->rowCount() > 0)? $message = "Data altered succesfully": $message = "Altering data unsuccesfull!";
+        return $message;
+    }
+
+    
     function addNew($array){
         $data = $this->pdo->prepare("INSERT INTO vehicles (make, plates, status, year, registration,
         mileage, serviceInt, tires) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
@@ -50,14 +59,6 @@ class Vehicles{
 
     }
 
-    function edit($array, $id){
-        $vehicle=$this->pdo->prepare("UPDATE vehicles SET make=?, plates=?, status=?, year=?, registration=?,
-        mileage=?, serviceInt=?, tires=? WHERE id='$id'");
-        $vehicle->execute($array);
-
-        ($vehicle->rowCount() > 0)? $message = "Data altered succesfully": $message = "Altering data unsuccesfull!";
-        return $message;
-    }
 }
 
 $vehicles = new Vehicles();

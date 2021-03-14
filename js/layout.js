@@ -7,31 +7,40 @@ let line = document.querySelectorAll(".line");
 line.forEach(element => element.style.width = screen.width*0.89 + "px");
 
 //edit-form run
-function editForm(){
-    let edit = document.querySelectorAll("input.edit");
-    line.forEach(el=>el.onclick = ()=>{
-        for(let i=0;i<el.children.length;i++){
-            edit[i].value = el.children[i].innerHTML;
-        }
-        document.querySelector("#edit").style.display = 'block';
-    })  
-}
+let edit = document.querySelectorAll("input.edit");
+line.forEach(el=>el.onclick = ()=>{
+    for(let i=0;i<el.children.length;i++){
+        edit[i].value = el.children[i].innerHTML;
+    }
+    document.querySelector("#edit").style.display = 'block';
+})  
 
 //edit-form kill
-function formKill(){
-    document.querySelector(".cancel").onclick = (e)=>{
-        e.preventDefault();
-        document.querySelector("#edit").style.display = 'none';
-    }    
+document.querySelector(".cancel").onclick = (e)=>{
+    e.preventDefault();
+    document.querySelector("#edit").style.display = 'none';
+    document.querySelector("#btn1").style.display = 'block';
+    document.querySelector("#btn2").style.display = 'none';
+    document.querySelectorAll(".edit").forEach(el=>el.disabled = true);
 }
+
+//edit button
+document.querySelector("#change").onclick = (e)=>{
+    e.preventDefault();
+    document.querySelector("#btn1").style.display = 'none';
+    document.querySelector("#btn2").style.display = 'block';
+    document.querySelectorAll(".edit").forEach(el=>el.disabled = false);
+}
+
+document.querySelector(".add").onclick = ()=>{
+    document.querySelector("#edit").style.display = 'block';
+    document.querySelectorAll(".edit").forEach(el=>el.disabled = false);
+}
+
 
 // message timeout
 const msg = document.querySelector("#msg");
 setTimeout(()=>{ (msg)? msg.style.display = 'none':""; }, 3000);
-
-
-editForm();
-formKill();
 
 
 // //this extends lines and overflow list
