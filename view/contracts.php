@@ -24,12 +24,18 @@ include_once "header.php";
             <?php             
                 foreach($contracts[0] as $ind=>$el){
                     ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
-                    print "<p class='inp'><span>$ind</span><input required name=$ind class='edit' type='text'></p>";
+                    print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";
                 }
             ?>
             <p>
-                <button id="rent">Rent</button>
-                <button id="send">Send</button>
+                <p id='btn1'>
+                    <button id="change">Edit</button>
+                    <button id="del">Delete</button>
+                </p>
+                <p id='btn2'>
+                    <button id="rent">Rent</button>
+                    <button id="send">Send</button>
+                </p>
             </p>
         </form>
     </div>
