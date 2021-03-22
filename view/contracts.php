@@ -2,7 +2,6 @@
 
 include "../controllers/contracts/getAllcontracts.php";
 include_once "header.php";
-print json_encode($contracts);
 
 ?>
 
@@ -77,18 +76,26 @@ print json_encode($contracts);
 
     <div id="list">
         <?php 
+        $switch = true;
             foreach($contracts as $el){
-                print "<ul class='line'>";
-                foreach($el as $ind=>$el1){
-                    if($ind == 'make' or $ind == 'name' or $ind == 'id'){ 
-                        if($ind == 'id') print "<li style='display: none'>$el1</li>";
-                        if($ind == 'make' or $ind == 'name') print "<li class='data data1'>$el1</li>";
-                    }else
-                    print "<li class='data data2'>$el1</li>";
+                if ($switch){
+                    print "<ul class='line'>";
+                    foreach($el as $ind=>$el1){
+                        if ($el1 == 'id'){
+                            print "No data";
+                            $switch = false;
+                            break;
+                        }
+                        if($ind == 'make' or $ind == 'name' or $ind == 'id'){ 
+                            if($ind == 'id') print "<li style='display: none'>$el1</li>";
+                            if($ind == 'make' or $ind == 'name') print "<li class='data data1'>$el1</li>";
+                        }else
+                        print "<li class='data data2'>$el1</li>";
+                    }
+                    print "</ul>";    
                 }
-                print "</ul>";
             }
-        ?>
+                ?>
     </div>
 
 </body>

@@ -5,14 +5,14 @@ document.querySelector("#list").style.width = screen.width*0.9 + "px";
 document.querySelector("#list").style.height = screen.height*0.64 + "px";
 let line = document.querySelectorAll(".line");
 line.forEach(element => element.style.width = screen.width*0.89 + "px");
-
+console.log(line.length);
 //edit-form run
 let edit = document.querySelectorAll("input.edit");
 line.forEach(el=>el.onclick = ()=>{
     for(let i=0;i<el.children.length;i++){
         edit[i].value = el.children[i].innerHTML;
     }
-    document.querySelector("#edit").style.display = 'block';
+    (line[0].innerHTML != 'No data')? document.querySelector("#edit").style.display = 'block':'';
 })  
 
 //edit-form kill
