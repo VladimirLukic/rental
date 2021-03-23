@@ -48,15 +48,26 @@ include_once "header.php";
     <div id="columns">
         <ul class="columns">
             <?php 
-                if(count($users) == 0){
-                    print "<li class='data'>No new users</li>";
-                    return;
+                foreach($users as $el){
+                    foreach($el as $ind=>$el1){
+                        if(count($el) < 2){
+                            ($el1 == 'id')? print "<li style='display: none;'>$el[0]</li>":print "<li class='data'>$el[0]</li>";
+                        }
+                        if(count($el) > 1){
+                            ($ind == 'id')? "":print "<li class='data'>$ind</li>";
+                        }
+                    }
                 }
             
-                foreach($users[0] as $ind=>$el){
-                    ($ind == 'id')? "":
-                    print "<li class='data'>$ind</li>";
-                }
+                // if(count($users) == 0){
+                //     print "<li class='data'>No new users</li>";
+                //     return;
+                // }
+            
+                // foreach($users[0] as $ind=>$el){
+                //     ($ind == 'id')? "":
+                //     print "<li class='data'>$ind</li>";
+                // }
             ?>
         </ul>
     </div>
@@ -69,17 +80,17 @@ include_once "header.php";
 
     <div id="list">
         <?php 
-            foreach($users as $el){
-                print "<ul class='line'>";
-                foreach($el as $ind=>$el1){
-                    if($ind == 'name' or $ind == 'passport' or $ind == 'id'){ 
-                        if($ind == 'id') print "<li style='display: none'>$el1</li>";
-                        if($ind == 'name' or $ind == 'passport') print "<li class='data data1'>$el1</li>";
-                    }else
-                    print "<li class='data data2'>$el1</li>";
-                }
-                print "</ul>";
-            }
+            // foreach($users as $el){
+            //     print "<ul class='line'>";
+            //     foreach($el as $ind=>$el1){
+            //         if($ind == 'name' or $ind == 'passport' or $ind == 'id'){ 
+            //             if($ind == 'id') print "<li style='display: none'>$el1</li>";
+            //             if($ind == 'name' or $ind == 'passport') print "<li class='data data1'>$el1</li>";
+            //         }else
+            //         print "<li class='data data2'>$el1</li>";
+            //     }
+            //     print "</ul>";
+            // }
         ?>
     </div>
 
