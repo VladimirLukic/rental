@@ -32,6 +32,10 @@ class Users{
     function getAll(){
         $data = $this->pdo->query("SELECT * FROM users ORDER BY name ASC");
         $users = $data->fetchAll(PDO::FETCH_ASSOC);
+        if(count($users) == 0){
+            $data = $this->pdo->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'rentacar' AND TABLE_NAME = 'users'");
+            $users = $data->fetchAll(PDO::FETCH_NUM);
+        }
         return $users;
     }
     function edit($array, $id){

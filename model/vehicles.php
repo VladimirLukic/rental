@@ -33,8 +33,13 @@ class Vehicles{
     function getAll(){
         $data = $this->pdo->query("SELECT * FROM vehicles ORDER BY make ASC");
         $vehicles = $data->fetchAll(PDO::FETCH_ASSOC);
+        if(count($vehicles) == 0){
+            $data = $this->pdo->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'rentacar' AND TABLE_NAME = 'vehicles'");
+            $vehicles = $data->fetchAll(PDO::FETCH_NUM);
+        }
         return $vehicles;
     }
+
     function edit($array, $id){
         $vehicle=$this->pdo->prepare("UPDATE vehicles SET make=?, plates=?, status=?, year=?, registration=?,
         mileage=?, serviceInt=?, tires=? WHERE id='$id'");
@@ -43,7 +48,6 @@ class Vehicles{
         ($vehicle->rowCount() > 0)? $message = "Data altered succesfully": $message = "Altering data unsuccesfull!";
         return $message;
     }
-
     
     function addNew($array){
         $data = $this->pdo->prepare("INSERT INTO vehicles (make, plates, status, year, registration,
@@ -56,7 +60,6 @@ class Vehicles{
         if($data->rowCount()==0){
             return "Vehicle not added!";
         }
-
     }
 
 }

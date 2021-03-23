@@ -29,11 +29,6 @@ class Contracts{
     function preventAI(){
         $this->pdo->query("ALTER TABLE contracts AUTO_INCREMENT = 0");
     }
-    // function getAll(){
-    //     $data = $this->pdo->query("SELECT * FROM contracts ORDER BY id ASC");
-    //     $contracts = $data->fetchAll(PDO::FETCH_ASSOC);
-    //     return $contracts;
-    // }
     function getAll(){
         $data = $this->pdo->query("SELECT * FROM contracts ORDER BY id ASC");
         $contracts = $data->fetchAll(PDO::FETCH_ASSOC);
