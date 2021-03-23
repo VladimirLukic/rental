@@ -48,10 +48,21 @@ include_once "header.php";
     <div id="columns">
         <ul class="columns">
             <?php 
-                foreach($contracts[0] as $ind=>$el){
-                    ($ind == 'id')? "":
-                    print "<li class='data'>$ind</li>";
+            foreach($contracts as $el){
+                foreach($el as $el1){
+                    ($el)
+                    if ($el1 == 'id'){
+                        print "<li style='display: none;'>$el[0]</li>";
+                    }else
+                    print "<li class='data'>$el[0]</li>";
+                    // ($el == 'id')? "":
+                    // print "<li class='data'>$ind</li>";
                 }
+            }
+                // foreach($contracts[0] as $ind=>$el){
+                //     ($ind == 'id')? "":
+                //     print "<li class='data'>$ind</li>";
+                // }
             ?>
         </ul>
     </div>
