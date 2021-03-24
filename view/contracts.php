@@ -2,6 +2,21 @@
 
 include "../controllers/contracts/getAllcontracts.php";
 include_once "header.php";
+foreach($contracts as $el){
+    foreach($el as $ind=>$el1){
+        if(count($el) < 2){
+            ($el1 == 'id')? print "<p style='display: none;'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>":
+            print "<p class='inp'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>";
+        }
+        if(count($el) > 1){
+            if($ind == 'id'){
+                print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>";
+            }else{
+                print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";
+            }
+        }
+    }
+}
 
 ?>
 
@@ -20,7 +35,7 @@ include_once "header.php";
             <p id="cancel">
                 <img class="cancel" src="../close_icon.png" alt="">
             </p>
-            <p>EDIT USER</p>
+            <p>CONTRACT</p>
             <?php                     
                 foreach($contracts as $el){
                     foreach($el as $ind=>$el1){
@@ -29,10 +44,11 @@ include_once "header.php";
                             print "<p class='inp'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>";
                         }
                         if(count($el) > 1){
-                            ($ind == 'id')? "":print "<li class='data'>$ind</li>";
+                            ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
+                                print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";
                         }
-                        break;
                     }
+                    break;
                 }
             ?>
             <p>

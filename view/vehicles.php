@@ -2,6 +2,19 @@
 
 include "../controllers/vehicles/getAllVehicles.php";
 include_once "header.php";
+foreach($vehicles as $el){
+    foreach($el as $ind=>$el1){
+        if(count($el) < 2){
+            ($el1 == 'id')? print "<p style='display: none;'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>":
+            print "<p class='inp'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>";
+        }
+        if(count($el) > 1){
+            ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
+            print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";
+            break;
+        }
+    }
+}
 
 ?>
 
@@ -13,8 +26,6 @@ include_once "header.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vehicles</title>
 </head>
-
-
 <body>
     <!-- popup form -->
     <div id="edit">
@@ -22,24 +33,21 @@ include_once "header.php";
             <p id="cancel">
                 <img class="cancel" src="../close_icon.png" alt="">
             </p>
-            <p>EDIT VEHICLE</p>
+            <p>VEHICLE</p>
             <?php 
                 foreach($vehicles as $el){
                     foreach($el as $ind=>$el1){
                         if(count($el) < 2){
                             ($el1 == 'id')? print "<p style='display: none;'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>":
-                            print "<p class='input'><span>$el[0]</span><input disabled required name=$el[0] class='edit' type='text'></p>";
+                            print "<p class='inp'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>";
                         }
                         if(count($el) > 1){
-                            ($ind == 'id')? "":print "<li class='data'>$ind</li>";
+                            ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
+                                print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";
                         }
                     }
                     break;
                 }
-                // foreach($vehicles[0] as $ind=>$el){
-                //     ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
-                //     print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";
-                // }
             ?>
             <p>
                 <p id='btn1'>

@@ -5,7 +5,7 @@ document.querySelector("#list").style.width = screen.width*0.9 + "px";
 document.querySelector("#list").style.height = screen.height*0.64 + "px";
 let line = document.querySelectorAll(".line");
 line.forEach(element => element.style.width = screen.width*0.89 + "px");
-console.log(line.length);
+
 //edit-form run
 let edit = document.querySelectorAll("input.edit");
 line.forEach(el=>el.onclick = ()=>{
