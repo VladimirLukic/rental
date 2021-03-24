@@ -35,6 +35,9 @@ document.querySelector("#change").onclick = (e)=>{
 document.querySelector(".add").onclick = ()=>{
     document.querySelector("#edit").style.display = 'block';
     document.querySelectorAll(".edit").forEach(el=>el.disabled = false);
+    document.querySelector("#btn1").style.display = 'none';
+    document.querySelector("#btn2").style.display = 'block';
+    document.querySelector("#rent").style.display = 'none';
 }
 
 

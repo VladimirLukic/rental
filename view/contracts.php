@@ -22,9 +22,17 @@ include_once "header.php";
             </p>
             <p>EDIT USER</p>
             <?php                     
-                foreach($contracts[0] as $ind=>$el){
-                    ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
-                    print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";
+                foreach($contracts as $el){
+                    foreach($el as $ind=>$el1){
+                        if(count($el) < 2){
+                            ($el1 == 'id')? print "<p style='display: none;'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>":
+                            print "<p class='inp'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>";
+                        }
+                        if(count($el) > 1){
+                            ($ind == 'id')? "":print "<li class='data'>$ind</li>";
+                        }
+                        break;
+                    }
                 }
             ?>
             <p>
@@ -57,6 +65,7 @@ include_once "header.php";
                             ($ind == 'id')? "":print "<li class='data'>$ind</li>";
                         }
                     }
+                    break;
                 }
             ?>
         </ul>

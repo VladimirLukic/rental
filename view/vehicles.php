@@ -24,10 +24,22 @@ include_once "header.php";
             </p>
             <p>EDIT VEHICLE</p>
             <?php 
-                foreach($vehicles[0] as $ind=>$el){
-                    ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
-                    print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";
+                foreach($vehicles as $el){
+                    foreach($el as $ind=>$el1){
+                        if(count($el) < 2){
+                            ($el1 == 'id')? print "<p style='display: none;'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>":
+                            print "<p class='input'><span>$el[0]</span><input disabled required name=$el[0] class='edit' type='text'></p>";
+                        }
+                        if(count($el) > 1){
+                            ($ind == 'id')? "":print "<li class='data'>$ind</li>";
+                        }
+                    }
+                    break;
                 }
+                // foreach($vehicles[0] as $ind=>$el){
+                //     ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
+                //     print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";
+                // }
             ?>
             <p>
                 <p id='btn1'>
@@ -51,14 +63,16 @@ include_once "header.php";
     <div id="columns">
         <ul class="columns">
             <?php 
-                if(count($vehicles) == 0){
-                    print "<li class='data'>No new vehicles</li>";
-                    return;
-                }
-
-                foreach($vehicles[0] as $ind=>$el){
-                    ($ind == 'id')? "":
-                    print "<li class='data'>$ind</li>";
+                foreach($vehicles as $el){
+                    foreach($el as $ind=>$el1){
+                        if(count($el) < 2){
+                            ($el1 == 'id')? print "<li style='display: none;'>$el[0]</li>":print "<li class='data'>$el[0]</li>";
+                        }
+                        if(count($el) > 1){
+                            ($ind == 'id')? "":print "<li class='data'>$ind</li>";
+                        }
+                    }
+                    break;
                 }
             ?>
         </ul>
@@ -72,17 +86,25 @@ include_once "header.php";
 
     <div id="list">
         <?php 
-            foreach($vehicles as $el){
+        $switch = true;
+        foreach($vehicles as $el){
+            if ($switch){
                 print "<ul class='line'>";
                 foreach($el as $ind=>$el1){
-                    if($ind == 'make' or $ind == 'plates' or $ind == 'id'){ 
+                    if ($el1 == 'id'){
+                        print "No data";
+                        $switch = false;
+                        break;
+                    }
+                    if($ind == 'make' or $ind == 'name' or $ind == 'id'){ 
                         if($ind == 'id') print "<li style='display: none'>$el1</li>";
-                        if($ind == 'make' or $ind == 'plates') print "<li class='data data1'>$el1</li>";
+                        if($ind == 'make' or $ind == 'name') print "<li class='data data1'>$el1</li>";
                     }else
                     print "<li class='data data2'>$el1</li>";
                 }
-                print "</ul>";
+                print "</ul>";    
             }
+        }
         ?>
     </div>
 

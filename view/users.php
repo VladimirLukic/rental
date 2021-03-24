@@ -57,17 +57,8 @@ include_once "header.php";
                             ($ind == 'id')? "":print "<li class='data'>$ind</li>";
                         }
                     }
+                    break;
                 }
-            
-                // if(count($users) == 0){
-                //     print "<li class='data'>No new users</li>";
-                //     return;
-                // }
-            
-                // foreach($users[0] as $ind=>$el){
-                //     ($ind == 'id')? "":
-                //     print "<li class='data'>$ind</li>";
-                // }
             ?>
         </ul>
     </div>
@@ -80,17 +71,25 @@ include_once "header.php";
 
     <div id="list">
         <?php 
-            // foreach($users as $el){
-            //     print "<ul class='line'>";
-            //     foreach($el as $ind=>$el1){
-            //         if($ind == 'name' or $ind == 'passport' or $ind == 'id'){ 
-            //             if($ind == 'id') print "<li style='display: none'>$el1</li>";
-            //             if($ind == 'name' or $ind == 'passport') print "<li class='data data1'>$el1</li>";
-            //         }else
-            //         print "<li class='data data2'>$el1</li>";
-            //     }
-            //     print "</ul>";
-            // }
+        $switch = true;
+        foreach($users as $el){
+            if ($switch){
+                print "<ul class='line'>";
+                foreach($el as $ind=>$el1){
+                    if ($el1 == 'id'){
+                        print "No data";
+                        $switch = false;
+                        break;
+                    }
+                    if($ind == 'make' or $ind == 'name' or $ind == 'id'){ 
+                        if($ind == 'id') print "<li style='display: none'>$el1</li>";
+                        if($ind == 'make' or $ind == 'name') print "<li class='data data1'>$el1</li>";
+                    }else
+                    print "<li class='data data2'>$el1</li>";
+                }
+                print "</ul>";    
+            }
+        }
         ?>
     </div>
 
