@@ -2,19 +2,6 @@
 
 include "../controllers/vehicles/getAllVehicles.php";
 include_once "header.php";
-foreach($vehicles as $el){
-    foreach($el as $ind=>$el1){
-        if(count($el) < 2){
-            ($el1 == 'id')? print "<p style='display: none;'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>":
-            print "<p class='inp'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>";
-        }
-        if(count($el) > 1){
-            ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
-            print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";
-            break;
-        }
-    }
-}
 
 ?>
 
@@ -34,21 +21,36 @@ foreach($vehicles as $el){
                 <img class="cancel" src="../close_icon.png" alt="">
             </p>
             <p>VEHICLE</p>
-            <?php 
+        <?php 
+            if(count($vehicles[0]) < 2){
+                foreach($vehicles as $el){
+                    ($el == 'id')? print "<p style='display: none;'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>":
+                    print "<p class='inp'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>";
+                }
+            }
+            if(count($vehicles[0]) > 1){
                 foreach($vehicles as $el){
                     foreach($el as $ind=>$el1){
-                        if(count($el) < 2){
-                            ($el1 == 'id')? print "<p style='display: none;'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>":
-                            print "<p class='inp'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>";
-                        }
-                        if(count($el) > 1){
-                            ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
-                                print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";
-                        }
+                        ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
+                        print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";    
                     }
                     break;
                 }
-            ?>
+            }    
+            // foreach($vehicles as $el){
+            //     foreach($el as $ind=>$el1){
+            //         if(count($el) < 2){
+            //             ($el1 == 'id')? print "<p style='display: none;'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>":
+            //             print "<p class='inp'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>";
+            //         }
+            //         if(count($el) > 1){
+            //             ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
+            //             print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";
+            //         }    
+            //     }
+            //     break;
+            // }
+        ?>
             <p>
                 <p id='btn1'>
                     <button id="change">Edit</button>

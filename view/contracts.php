@@ -2,21 +2,6 @@
 
 include "../controllers/contracts/getAllcontracts.php";
 include_once "header.php";
-foreach($contracts as $el){
-    foreach($el as $ind=>$el1){
-        if(count($el) < 2){
-            ($el1 == 'id')? print "<p style='display: none;'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>":
-            print "<p class='inp'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>";
-        }
-        if(count($el) > 1){
-            if($ind == 'id'){
-                print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>";
-            }else{
-                print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";
-            }
-        }
-    }
-}
 
 ?>
 
@@ -36,21 +21,37 @@ foreach($contracts as $el){
                 <img class="cancel" src="../close_icon.png" alt="">
             </p>
             <p>CONTRACT</p>
-            <?php                     
+        <?php 
+            if(count($contracts[0]) < 2){
+                foreach($contracts as $el){
+                    ($el == 'id')? print "<p style='display: none;'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>":
+                    print "<p class='inp'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>";
+                }
+            }
+            if(count($contracts[0]) > 1){
                 foreach($contracts as $el){
                     foreach($el as $ind=>$el1){
-                        if(count($el) < 2){
-                            ($el1 == 'id')? print "<p style='display: none;'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>":
-                            print "<p class='inp'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>";
-                        }
-                        if(count($el) > 1){
-                            ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
-                                print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";
-                        }
+                        ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
+                        print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";    
                     }
                     break;
                 }
-            ?>
+            }    
+                            
+            // foreach($contracts as $el){
+            //     foreach($el as $ind=>$el1){
+            //         if(count($el) < 2){
+            //             ($el1 == 'id')? print "<p style='display: none;'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>":
+            //             print "<p class='inp'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>";
+            //         }
+            //         if(count($el) > 1){
+            //             ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
+            //             print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";
+            //         }    
+            //     }
+            //     break;
+            // }
+        ?>
             <p>
                 <p id='btn1'>
                     <button id="change">Edit</button>
