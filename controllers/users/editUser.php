@@ -6,7 +6,6 @@ $id = $_POST['id'];
 $data = [
     $_POST['name'],
     $_POST['passport'],
-    $_POST['status'],
     $_POST['address'],
     $_POST['driversLicence'],
     $_POST['issued'],

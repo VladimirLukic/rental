@@ -2,10 +2,10 @@
 
 include "../../model/vehicles.php";
 
-$id = $_POST['id'];
 $data = [
     $_POST['make'],
     $_POST['plates'],
+    'parked',
     $_POST['year'],
     $_POST['registration'],
     $_POST['mileage'],
@@ -13,7 +13,7 @@ $data = [
     $_POST['tires']
 ];
 
-$message = $vehicles->edit($data, $id);
+$message = $vehicles->addNew($data);
 header("Location: ../../view/vehicles.php?Message=".$message);
 
 ?>

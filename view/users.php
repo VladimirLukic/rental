@@ -16,35 +16,43 @@ include_once "header.php";
 <body>
     <!-- popup form -->
     <div id="edit">
+        <p id="actEdit" style='display: none'>../controllers/users/editUser.php</p>
+        <p id="actAdd" style='display: none'>../controllers/users/addUser.php</p>
+        <p id="actRent" style='display: none'>../controllers/users/rentUser.php</p>
+        <p id="actDel" style='display: none'>../controllers/users/deleteUser.php</p>
         <form action="../controllers/users/editUser.php" method="POST">
             <p id="cancel">
                 <img class="cancel" src="../close_icon.png" alt="">
             </p>
             <p>USER</p>
             <?php 
-                if(count($users[0]) < 2){
-                    foreach($users as $el){
-                        ($el == 'id')? print "<p style='display: none;'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>":
+            if(count($users[0]) < 2){
+                foreach($users as $el){
+                    if($el[0] == 'id' or $el[0] == 'status')
+                        print "<p style='display: none;'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>";
+                    else
                         print "<p class='inp'><span>$el[0]</span><input required name=$el[0] class='edit' type='text'></p>";
-                    }
                 }
-                if(count($users[0]) > 1){
-                    foreach($users as $el){
-                        foreach($el as $ind=>$el1){
-                            ($ind == 'id')? print "<p style='display: none'><span>$ind</span><input required name=$ind class='edit' type='text'></p>":
-                            print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";    
-                        }
-                        break;
+            }
+            if(count($users[0]) > 1){
+                foreach($users as $el){
+                    foreach($el as $ind=>$el1){
+                        if($ind == 'id' or $ind == 'status')
+                            print "<p style='display: none'><span>$ind</span><input name=$ind class='edit' type='text'></p>";
+                        else
+                        print "<p class='inp'><span>$ind</span><input disabled required name=$ind class='edit' type='text'></p>";        
                     }
-                }    
+                    break;
+                }
+            }    
             ?>
             <p>
                 <p id='btn1'>
-                    <button id="change">Edit</button>
+                    <button id="rent">Rent</button>
                     <button id="del">Delete</button>
+                    <button id="change">Edit</button>
                 </p>
                 <p id='btn2'>
-                    <button id="rent">Rent</button>
                     <button id="send">Send</button>
                 </p>
             </p>

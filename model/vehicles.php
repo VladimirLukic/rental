@@ -41,7 +41,7 @@ class Vehicles{
     }
 
     function edit($array, $id){
-        $vehicle=$this->pdo->prepare("UPDATE vehicles SET make=?, plates=?, status=?, year=?, registration=?,
+        $vehicle=$this->pdo->prepare("UPDATE vehicles SET make=?, plates=?, year=?, registration=?,
         mileage=?, serviceInt=?, tires=? WHERE id='$id'");
         $vehicle->execute($array);
 

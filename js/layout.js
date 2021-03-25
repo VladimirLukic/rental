@@ -5,9 +5,9 @@ document.querySelector("#list").style.width = screen.width*0.9 + "px";
 document.querySelector("#list").style.height = screen.height*0.64 + "px";
 let line = document.querySelectorAll(".line");
 line.forEach(element => element.style.width = screen.width*0.89 + "px");
+let edit = document.querySelectorAll("input.edit");
 
 //edit-form run
-let edit = document.querySelectorAll("input.edit");
 line.forEach(el=>el.onclick = ()=>{
     for(let i=0;i<el.children.length;i++){
         edit[i].value = el.children[i].innerHTML;
@@ -21,6 +21,7 @@ document.querySelector(".cancel").onclick = (e)=>{
     document.querySelector("#edit").style.display = 'none';
     document.querySelector("#btn1").style.display = 'block';
     document.querySelector("#btn2").style.display = 'none';
+    document.querySelector("form").action = document.querySelector("#actEdit").innerHTML;
     edit.forEach(el=>el.disabled = true);
 }
 
@@ -32,14 +33,17 @@ document.querySelector("#change").onclick = (e)=>{
     document.querySelectorAll(".edit").forEach(el=>el.disabled = false);
 }
 
+//add
 document.querySelector(".add").onclick = ()=>{
     document.querySelector("#edit").style.display = 'block';
-    edit.forEach(el=>{el.disabled = false; el.value = "";});
+    edit.forEach(el=>{el.disabled = false; el.value = " ";});
     document.querySelector("#btn1").style.display = 'none';
     document.querySelector("#btn2").style.display = 'block';
     document.querySelector("#rent").style.display = 'none';
+    document.querySelector("form").action = document.querySelector("#actAdd").innerHTML;
 }
 
+//dodati eventove za rent i delete
 
 // message timeout
 const msg = document.querySelector("#msg");

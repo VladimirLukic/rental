@@ -39,7 +39,7 @@ class Users{
         return $users;
     }
     function edit($array, $id){
-        $user=$this->pdo->prepare("UPDATE users SET name=?, passport=?, status=?, address=?, driversLicence=?,
+        $user=$this->pdo->prepare("UPDATE users SET name=?, passport=?, address=?, driversLicence=?,
         issued=?, issuedBy=?, phone=? WHERE id='$id'");
         $user->execute($array);
 

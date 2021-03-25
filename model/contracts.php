@@ -39,7 +39,7 @@ class Contracts{
         return $contracts;
     }
     function edit($array, $id){
-        $contract=$this->pdo->prepare("UPDATE contracts SET vehicle=?, plates=?, name=?, passport=?, status=?, startDate=?,
+        $contract=$this->pdo->prepare("UPDATE contracts SET vehicle=?, plates=?, name=?, passport=?, startDate=?,
         returnDate=?, mileage=?, pricePerDay=? depozit=? WHERE id='$id'");
         $contract->execute($array);
 
