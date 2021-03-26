@@ -22,7 +22,6 @@ document.querySelector(".cancel").onclick = (e)=>{
     document.querySelector("#edit").style.display = 'none';
     document.querySelector("#btn1").style.display = 'block';
     document.querySelector("#btn2").style.display = 'none';
-    document.querySelector("form").action = document.querySelector("#actEdit").innerHTML;
 }
 
 //edit button
@@ -43,7 +42,12 @@ document.querySelector(".add").onclick = ()=>{
     document.querySelector("form").action = document.querySelector("#send").value;
 }
 
-//dodati eventove za rent i delete
+//delete
+document.querySelector("#del").onclick = (e)=>{
+    document.querySelector("form").action = document.querySelector("#del").value;
+}
+
+//dodati eventove za rent
 
 // message timeout
 const msg = document.querySelector("#msg");

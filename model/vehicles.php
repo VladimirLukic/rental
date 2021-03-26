@@ -41,11 +41,11 @@ class Vehicles{
     }
 
     function edit($array, $id){
-        $vehicle=$this->pdo->prepare("UPDATE vehicles SET make=?, plates=?, year=?, registration=?,
+        $data=$this->pdo->prepare("UPDATE vehicles SET make=?, plates=?, year=?, registration=?,
         mileage=?, serviceInt=?, tires=? WHERE id='$id'");
-        $vehicle->execute($array);
+        $data->execute($array);
 
-        ($vehicle->rowCount() > 0)? $message = "Data altered succesfully": $message = "Altering data unsuccesfull!";
+        ($data->rowCount() > 0)? $message = "Data altered succesfully": $message = "Altering data unsuccesfull!";
         return $message;
     }
     
@@ -57,7 +57,12 @@ class Vehicles{
         ($data->rowCount() > 0)? $message = "Vehicle added succesfully": $message = "Vehicle not added!";
         return $message;
     }
-    
+    function delete($id){
+    $data = $this->pdo->query("DELETE FROM vehicles WHERE id='$id'");
+
+    ($data->rowCount() > 0)? $message = "Vehicle deleted succesfully": $message = "Vehicle not deleted!";
+    return $message;
+    }
 }
 
 $vehicles = new Vehicles();

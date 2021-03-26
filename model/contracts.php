@@ -42,7 +42,7 @@ class Contracts{
 
     function edit($array, $id){
         $contract = $this->pdo->prepare("UPDATE contracts SET vehicle=?, plates=?, name=?, passport=?, startDate=?,
-        returnDate=?, mileage=?, pricePerDay=? depozit=? WHERE id='$id'");
+        returnDate=?, mileage=?, pricePerDay=?, depozit=? WHERE id='$id'");
         $contract->execute($array);
 
         ($contract->rowCount() > 0)? $message = "Data altered succesfully": $message = "Altering data unsuccesfull!";
@@ -55,6 +55,13 @@ class Contracts{
         $data->execute($array);
 
         ($data->rowCount() > 0)? $message = "Contract created succesfully": $message = "Contract not created!";
+        return $message;
+    }
+
+    function delete($id){
+        $data = $this->pdo->query("UPDATE contracts SET status='archive' WHERE id='$id'");
+    
+        ($data->rowCount() > 0)? $message = "Contract is deleted": $message = "Contract is not deleted!";
         return $message;
     }
 

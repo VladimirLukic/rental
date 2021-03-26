@@ -56,6 +56,13 @@ class Users{
         return $message;
     }
 
+    function delete($id){
+        $data = $this->pdo->query("DELETE FROM users WHERE id='$id'");
+    
+        ($data->rowCount() > 0)? $message = "User deleted succesfully": $message = "User not deleted!";
+        return $message;
+    }
+    
 }
 
 $users = new Users();

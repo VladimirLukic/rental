@@ -16,8 +16,6 @@ include_once "header.php";
 <body>
     <!-- popup form -->
     <div id="edit">
-        <p id="actRent" style='display: none'>../controllers/contracts/rentContract.php</p>
-        <p id="actDel" style='display: none'>../controllers/contracts/deleteContract.php</p>
         <form action="../controllers/contracts/editContract.php" method="POST">
             <p id="cancel">
                 <img class="cancel" src="../close_icon.png" alt="">
@@ -48,7 +46,7 @@ include_once "header.php";
             <p>
                 <p id='btn1'>
                     <button id="change">Edit</button>
-                    <button id="del">Archive</button>
+                    <button id="del" value='../controllers/contracts/deleteContract.php'>Archive</button>
                 </p>
                 <p id='btn2'>
                     <button id="send" value='../controllers/contracts/addContract.php'>Send</button>
@@ -59,7 +57,7 @@ include_once "header.php";
     <div class="drop-menu vozila">
         <p class="menu-list all">All contracts</p>
         <p class="menu-list rented">Active</p>
-        <p class="menu-list parked">Inactiv</p>
+        <p class="menu-list parked">Archived</p>
         <p class="menu-list add">Make contract</p>
     </div>
     <div id="columns">
