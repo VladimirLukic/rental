@@ -7,7 +7,7 @@ $data = [
     $_POST['plates'],
     $_POST['name'],
     $_POST['passport'],
-    'active',
+    'inactive',
     $_POST['startDate'],
     $_POST['returnDate'],
     $_POST['mileage'],

@@ -18,11 +18,11 @@ line.forEach(el=>el.onclick = ()=>{
 //edit-form kill
 document.querySelector(".cancel").onclick = (e)=>{
     e.preventDefault();
+    edit.forEach(el=>el.disabled = true);
     document.querySelector("#edit").style.display = 'none';
     document.querySelector("#btn1").style.display = 'block';
     document.querySelector("#btn2").style.display = 'none';
     document.querySelector("form").action = document.querySelector("#actEdit").innerHTML;
-    edit.forEach(el=>el.disabled = true);
 }
 
 //edit button

@@ -57,6 +57,7 @@ class Vehicles{
         ($data->rowCount() > 0)? $message = "Vehicle added succesfully": $message = "Vehicle not added!";
         return $message;
     }
+    
 }
 
 $vehicles = new Vehicles();
