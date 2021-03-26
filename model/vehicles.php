@@ -57,11 +57,16 @@ class Vehicles{
         ($data->rowCount() > 0)? $message = "Vehicle added succesfully": $message = "Vehicle not added!";
         return $message;
     }
-    function delete($id){
-    $data = $this->pdo->query("DELETE FROM vehicles WHERE id='$id'");
+    function delete($id, $plates){
+        $data = $this->pdo->query("SELECT * FROM contracts WHERE plates='$plates'");
+        $user = $data->fetchAll(PDO::FETCH_ASSOC);
+        if(count($user) == 1){
+            return "The vehicle is rented and can not be deleted!";
+        }else
+        $data = $this->pdo->query("DELETE FROM vehicles WHERE id='$id'");
 
-    ($data->rowCount() > 0)? $message = "Vehicle deleted succesfully": $message = "Vehicle not deleted!";
-    return $message;
+        ($data->rowCount() > 0)? $message = "Vehicle deleted succesfully": $message = "Vehicle is not deleted!";
+        return $message;
     }
 }
 

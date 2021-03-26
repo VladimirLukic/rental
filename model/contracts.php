@@ -31,7 +31,7 @@ class Contracts{
     }
 
     function getAll(){
-        $data = $this->pdo->query("SELECT * FROM contracts ORDER BY id ASC");
+        $data = $this->pdo->query("SELECT * FROM contracts WHERE status='active' ORDER BY id ASC");
         $contracts = $data->fetchAll(PDO::FETCH_ASSOC);
         if(count($contracts) == 0){
             $data = $this->pdo->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'rentacar' AND TABLE_NAME = 'contracts'");
@@ -58,11 +58,29 @@ class Contracts{
         return $message;
     }
 
-    function delete($id){
-        $data = $this->pdo->query("UPDATE contracts SET status='archive' WHERE id='$id'");
+    function delete($id, $status){
+        if($status == 'active'){
+            $data = $this->pdo->query("UPDATE contracts SET status='archive' WHERE id='$id'");
+            $state = 'archived';
+        }
+        if($status == 'archive'){
+            $data = $this->pdo->query("DELETE FROM contracts WHERE id='$id'");
+            $state = 'deleted';
+        }
     
-        ($data->rowCount() > 0)? $message = "Contract is deleted": $message = "Contract is not deleted!";
+        ($data->rowCount() > 0)? $message = "Contract is $state": $message = "Contract is not $state!";
         return $message;
+    }
+
+    function deactivate($plates, $passport){
+        $data = $this->pdo->query("SELECT * FROM contracts WHERE passport='$passport'");
+        $contracts = $data->fetchAll(PDO::FETCH_ASSOC);
+        (count($contracts) > 1)? "":
+            $this->pdo->query("UPDATE users SET status='inactive' WHERE passport='$passport'");
+
+        $park = $this->pdo->query("UPDATE vehicles SET status='parked' WHERE plates='$plates'");
+        ($park->rowCount() > 0)? $status = true: $status = false;
+        return $status;
     }
 
 }
