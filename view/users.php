@@ -16,8 +16,6 @@ include_once "header.php";
 <body>
     <!-- popup form -->
     <div id="edit">
-        <p id="actEdit" style='display: none'>../controllers/users/editUser.php</p>
-        <p id="actAdd" style='display: none'>../controllers/users/addUser.php</p>
         <p id="actRent" style='display: none'>../controllers/users/rentUser.php</p>
         <p id="actDel" style='display: none'>../controllers/users/deleteUser.php</p>
         <form action="../controllers/users/editUser.php" method="POST">
@@ -53,7 +51,7 @@ include_once "header.php";
                     <button id="change">Edit</button>
                 </p>
                 <p id='btn2'>
-                    <button id="send">Send</button>
+                    <button id="send" value='../controllers/users/addUser.php'>Send</button>
                 </p>
             </p>
         </form>

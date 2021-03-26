@@ -47,6 +47,15 @@ class Users{
         return $message;
     }
 
+    function addNew($array){
+        $data = $this->pdo->prepare("INSERT INTO users (name, passport, status, address, driversLicence,
+        issued, issuedBy, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $data->execute($array);
+
+        ($data->rowCount() > 0)? $message = "User added succesfully": $message = "User not added!";
+        return $message;
+    }
+
 }
 
 $users = new Users();

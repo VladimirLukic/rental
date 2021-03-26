@@ -54,14 +54,9 @@ class Vehicles{
         mileage, serviceInt, tires) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $data->execute($array);
 
-        if($data->rowCount()>0){
-            return "Vehicle added succesfully";
-        }
-        if($data->rowCount()==0){
-            return "Vehicle not added!";
-        }
+        ($data->rowCount() > 0)? $message = "Vehicle added succesfully": $message = "Vehicle not added!";
+        return $message;
     }
-
 }
 
 $vehicles = new Vehicles();

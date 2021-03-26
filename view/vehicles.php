@@ -16,10 +16,8 @@ include_once "header.php";
 <body>
     <!-- popup form -->
     <div id="edit">
-        <p id="actEdit" style='display: none'>../controllers/vehicles/editVehicle.php</p>
-        <p id="actAdd" style='display: none'>../controllers/users/addVehicle.php</p>
-        <p id="actRent" style='display: none'>../controllers/users/rentVehicle.php</p>
-        <p id="actDel" style='display: none'>../controllers/users/deleteVehicle.php</p>
+        <p id="actRent" style='display: none'>../controllers/vehicles/rentVehicle.php</p>
+        <p id="actDel" style='display: none'>../controllers/vehicles/deleteVehicle.php</p>
         <form action="../controllers/vehicles/editVehicle.php" method="POST">
             <p id="cancel">
                 <img class="cancel" src="../close_icon.png" alt="">
@@ -54,7 +52,7 @@ include_once "header.php";
                     <button id="change">Edit</button>
                 </p>
                 <p id='btn2'>
-                    <button id="send">Send</button>
+                    <button id="send" value='../controllers/vehicles/addVehicle.php'>Send</button>
                 </p>
             </p>
         </form>

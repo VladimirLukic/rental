@@ -39,8 +39,8 @@ document.querySelector(".add").onclick = ()=>{
     edit.forEach(el=>{el.disabled = false; el.value = " ";});
     document.querySelector("#btn1").style.display = 'none';
     document.querySelector("#btn2").style.display = 'block';
-    document.querySelector("#rent").style.display = 'none';
-    document.querySelector("form").action = document.querySelector("#actAdd").innerHTML;
+    (document.querySelector("#rent"))? document.querySelector("#rent").style.display = 'none':"";
+    document.querySelector("form").action = document.querySelector("#send").value;
 }
 
 //dodati eventove za rent i delete

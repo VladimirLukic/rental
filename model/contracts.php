@@ -47,6 +47,15 @@ class Contracts{
         return $message;
     }
 
+    function addNew($array){
+        $data = $this->pdo->prepare("INSERT INTO contracts (vehicle, plates, name, passport, status,
+        startDate, returnDate, mileage, pricePerDay, depozit) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $data->execute($array);
+
+        ($data->rowCount() > 0)? $message = "Contract created succesfully": $message = "Contract not created!";
+        return $message;
+    }
+
 }
 
 $contracts = new Contracts();
