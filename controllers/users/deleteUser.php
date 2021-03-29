@@ -3,9 +3,8 @@
 include "../../model/users.php";
 
 $id = $_POST['id'];
-$passport = $_POST['passport'];
 
-$message = $users->delete($id, $passport);
+$message = $users->delete($id);
 header("Location: ../../view/users.php?Message=".$message);
 
 ?>

@@ -3,9 +3,8 @@
 include "../../model/vehicles.php";
 
 $id = $_POST['id'];
-$plates = $_POST['plates'];
 
-$message = $vehicles->delete($id, $plates);
+$message = $vehicles->delete($id);
 header("Location: ../../view/vehicles.php?Message=".$message);
 
 ?>
