@@ -52,7 +52,7 @@ document.querySelector("#del").onclick = (e)=>{
 
 // message timeout
 const msg = document.querySelector("#msg");
-setTimeout(()=>{ (msg)? msg.style.display = 'none':""; }, 3000);
+setTimeout(()=>{ (msg)? msg.style.display = 'none':""; }, 5000);
 
 
 // //this extends lines and overflow list
