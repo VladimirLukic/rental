@@ -46,7 +46,7 @@ include_once "header.php";
             <p>
                 <p id='btn1'>
                     <button id="change">Edit</button>
-                    <button id="del" value='../controllers/contracts/deleteContract.php'>Delete</button>
+                    <button id="del" value='../controllers/contracts/deleteContract.php'>Archive</button>
                 </p>
                 <p id='btn2'>
                     <button id="send" value='../controllers/contracts/addContract.php'>Send</button>
@@ -56,11 +56,7 @@ include_once "header.php";
     </div>
     <div class="drop-menu vozila">
         <p class="menu-list all">Contracts</p>
-<<<<<<< HEAD
         <p class="menu-list parked">Archive</p>
-=======
-        <p class="menu-list parked">Archived</p>
->>>>>>> 9887200c175c5018ab17f93479ce7bb3d6522e4f
         <p class="menu-list add">Make contract</p>
     </div>
     <div id="columns">

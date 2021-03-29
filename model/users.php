@@ -56,7 +56,6 @@ class Users{
         return $message;
     }
 
-<<<<<<< HEAD
     function delete($id){
         $data = $this->pdo->query("SELECT * FROM users WHERE id='$id'");
         $delete = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -66,17 +65,6 @@ class Users{
         }else
         $message = "User have car in use and can not be deleted!";
 
-=======
-    function delete($id, $passport){
-        $data = $this->pdo->query("SELECT * FROM contracts WHERE passport='$passport'");
-        $user = $data->fetchAll(PDO::FETCH_ASSOC);
-        if(count($user) > 1){
-            return "User have more active contracts and can not be deleted!";
-        }else
-        $delete = $this->pdo->query("DELETE FROM users WHERE id='$id'");    
-
-        ($delete->rowCount() > 0)? $message = "User deleted succesfully": $message = "User is not deleted!";
->>>>>>> 9887200c175c5018ab17f93479ce7bb3d6522e4f
         return $message;
     }
     
