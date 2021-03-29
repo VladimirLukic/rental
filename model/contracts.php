@@ -59,9 +59,15 @@ class Contracts{
     }
 
     function delete($id){
-        $data = $this->pdo->query("UPDATE contracts SET status='archive' WHERE id='$id'");
-    
-        ($data->rowCount() > 0)? $message = "Contract is deleted": $message = "Contract is not deleted!";
+        $data = $this->pdo->query("SELECT * FROM contracts WHERE id='$id'");
+        $delete = $data->fetchAll(PDO::FETCH_ASSOC);
+        if($delete[0]['status'] == 'archive'){
+            $this->pdo->query("DELETE FROM contracts WHERE id='$id'");
+            ($data->rowCount() > 0)? $message = "Contract is deleted": $message = "Contract is not deleted!";
+        }else{
+            $this->pdo->query("UPDATE contracts SET status='archive' WHERE id='$id'");
+            ($data->rowCount() > 0)? $message = "Contract is archived": $message = "Contract is not archived!";
+        }
         return $message;
     }
 

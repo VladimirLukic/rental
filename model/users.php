@@ -57,9 +57,14 @@ class Users{
     }
 
     function delete($id){
-        $data = $this->pdo->query("DELETE FROM users WHERE id='$id'");
-    
-        ($data->rowCount() > 0)? $message = "User deleted succesfully": $message = "User not deleted!";
+        $data = $this->pdo->query("SELECT * FROM users WHERE id='$id'");
+        $delete = $data->fetchAll(PDO::FETCH_ASSOC);
+        if($delete[0]['status'] == 'inactive'){
+            $this->pdo->query("DELETE FROM users WHERE id='$id'");
+            $message = "User is deleted";
+        }else
+        $message = "User have car in use and can not be deleted!";
+
         return $message;
     }
     

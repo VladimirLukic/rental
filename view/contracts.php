@@ -55,9 +55,8 @@ include_once "header.php";
         </form>
     </div>
     <div class="drop-menu vozila">
-        <p class="menu-list all">All contracts</p>
-        <p class="menu-list rented">Active</p>
-        <p class="menu-list parked">Archived</p>
+        <p class="menu-list all">Contracts</p>
+        <p class="menu-list parked">Archive</p>
         <p class="menu-list add">Make contract</p>
     </div>
     <div id="columns">
