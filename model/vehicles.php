@@ -69,6 +69,25 @@ class Vehicles{
 
         return $message;
     }
+
+    function draft(){
+        $data = $this->pdo->query("SELECT * FROM contracts WHERE status='draft'");
+        $draft = $data->fetchAll(PDO::FETCH_NUM);
+        return count($draft);
+    }
+
+    function rent($array){
+        if($draft = )$this->draft() == 1){
+            $data = $this->pdo->prepare("INSERT INTO contracts (vehicle, plates) VALUES (?, ?) WHERE status='draft'");
+            $data->execute($array);
+        }else{
+            $data = $this->pdo->query("INSERT INTO contracts (vehicle, plates, status) VALUES ($array[0], $array[1], 'draft')");
+        }
+
+        ($data->rowCount() > 0)? $message = "Vehicle rented succesfully": $message = "Vehicle not rented!";
+        return $message;
+
+    }
 }
 
 $vehicles = new Vehicles();

@@ -16,7 +16,6 @@ include_once "header.php";
 <body>
     <!-- popup form -->
     <div id="edit">
-        <p id="actRent" style='display: none'>../controllers/users/rentUser.php</p>
         <form action="../controllers/users/editUser.php" method="POST">
             <p id="cancel">
                 <img class="cancel" src="../close_icon.png" alt="">
@@ -45,7 +44,7 @@ include_once "header.php";
             ?>
             <p>
                 <p id='btn1'>
-                    <button id="rent">Rent</button>
+                    <button id="rent" value='../controllers/users/rentUser.php'>Rent</button>
                     <button id="del" value='../controllers/users/deleteUser.php'>Delete</button>
                     <button id="change">Edit</button>
                 </p>

@@ -11,7 +11,10 @@ let edit = document.querySelectorAll("input.edit");
 line.forEach(el=>el.onclick = ()=>{
     for(let i=0;i<el.children.length;i++){
         edit[i].value = el.children[i].innerHTML;
-        (edit[i].value == 'archive')? document.querySelector("#del").innerHTML = 'Delete':"";
+        if(edit[i].value == 'archive'){
+            document.querySelector("#change").remove();
+            document.querySelector("#del").innerHTML = 'Delete';
+        }
     }
     (line[0].innerHTML != 'No data')? document.querySelector("#edit").style.display = 'block':'';
 })  
@@ -21,8 +24,8 @@ document.querySelector(".cancel").onclick = (e)=>{
     e.preventDefault();
     edit.forEach(el=>el.disabled = true);
     document.querySelector("#edit").style.display = 'none';
-    document.querySelector("#btn1").style.display = 'block';
-    document.querySelector("#btn2").style.display = 'none';
+    // document.querySelector("#btn1").style.display = 'block';
+    // document.querySelector("#btn2").style.display = 'none';
 }
 
 //edit button
@@ -48,7 +51,12 @@ document.querySelector("#del").onclick = (e)=>{
     document.querySelector("form").action = document.querySelector("#del").value;
 }
 
-//dodati eventove za rent, active, inactive
+// rent
+document.querySelector("#rent").onclick = (e)=>{
+    document.querySelector("form").action = document.querySelector("#rent").value;
+}
+
+//dodati eventove za active, inactive
 
 // message timeout
 const msg = document.querySelector("#msg");
