@@ -83,6 +83,24 @@ class Contracts{
         return count($users);
     }
 
+    function draft(){
+        $data = $this->pdo->query("SELECT * FROM contracts WHERE status='draft'");
+        $draft = $data->fetchAll(PDO::FETCH_NUM);
+        return count($draft);
+    }
+
+    function rent($array){
+        if($this->draft() == 1){
+            $data = $this->pdo->query("INSERT INTO contracts ('$array[2]', '$array[3]') VALUES ($array[0], $array[1]) WHERE status='draft'");
+            $data->execute($array);
+        }else{
+            $data = $this->pdo->query("INSERT INTO contracts ('$array[2]', '$array[3]', status) VALUES ($array[0], $array[1], 'draft')");
+        }
+
+        ($data->rowCount() > 0)? $message = "Contract drafted succesfully!": $message = "Contract not drafted!";
+        return $message;
+    }
+
 }
 
 $contracts = new Contracts();

@@ -24,8 +24,8 @@ document.querySelector(".cancel").onclick = (e)=>{
     e.preventDefault();
     edit.forEach(el=>el.disabled = true);
     document.querySelector("#edit").style.display = 'none';
-    // document.querySelector("#btn1").style.display = 'block';
-    // document.querySelector("#btn2").style.display = 'none';
+    document.querySelector("#btn1").style.display = 'block';
+    document.querySelector("#btn2").style.display = 'none';
 }
 
 //edit button
@@ -47,13 +47,14 @@ document.querySelector(".add").onclick = ()=>{
 }
 
 //delete
-document.querySelector("#del").onclick = (e)=>{
+document.querySelector("#del").onclick = ()=>{
     document.querySelector("form").action = document.querySelector("#del").value;
 }
 
 // rent
 document.querySelector("#rent").onclick = (e)=>{
     document.querySelector("form").action = document.querySelector("#rent").value;
+
 }
 
 //dodati eventove za active, inactive

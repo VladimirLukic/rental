@@ -45,9 +45,9 @@ include_once "header.php";
         ?>
             <p>
                 <p id='btn1'>
-                    <button id="rent" value='../controllers/vehicles/rentVehicle.php'>Rent</button>
-                    <button id="del" value='../controllers/vehicles/deleteVehicle.php'>Delete</button>
                     <button id="change">Edit</button>
+                    <button id="del" value='../controllers/vehicles/deleteVehicle.php'>Delete</button>
+                    <button id="rent" value='../controllers/contracts/rent.php'>Rent</button>
                 </p>
                 <p id='btn2'>
                     <button id="send" value='../controllers/vehicles/addVehicle.php'>Send</button>
