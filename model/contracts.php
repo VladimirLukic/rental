@@ -93,11 +93,11 @@ class Contracts{
         if($this->draft() == 1){
             $data = $this->pdo->query("INSERT INTO contracts ('$array[2]', '$array[3]') VALUES ($array[0], $array[1]) WHERE status='draft'");
             $data->execute($array);
+            ($data->rowCount() > 0)? $message = "Contract drafted succesfully!": $message = "Contract not drafted!";
         }else{
             $data = $this->pdo->query("INSERT INTO contracts ('$array[2]', '$array[3]', status) VALUES ($array[0], $array[1], 'draft')");
+            ($data->rowCount() > 0)? $message = "Contract drafted succesfully!": $message = "Contract not drafted!";
         }
-
-        ($data->rowCount() > 0)? $message = "Contract drafted succesfully!": $message = "Contract not drafted!";
         return $message;
     }
 

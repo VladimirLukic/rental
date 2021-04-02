@@ -52,10 +52,10 @@ document.querySelector("#del").onclick = ()=>{
 }
 
 // rent
-document.querySelector("#rent").onclick = (e)=>{
+const rent = document.querySelector("#rent");
+(rent)? rent.onclick = ()=>{
     document.querySelector("form").action = document.querySelector("#rent").value;
-
-}
+}:"";
 
 //dodati eventove za active, inactive
 
